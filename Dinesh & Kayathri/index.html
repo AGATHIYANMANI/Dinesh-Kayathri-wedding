@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinesh &amp; Kayathri — Royal Wedding Invitation | 14 &amp; 15 Nov 2026</title>
+  
+  <!-- SEO & Social Sharing Meta Tags -->
+  <meta name="description" content="With the blessings of the Almighty and our elders, join us in celebrating the wedding of Dinesh &amp; Kayathri on November 14 &amp; 15, 2026 at Koogaiyur.">
+  <meta name="theme-color" content="#060c18">
+  <meta property="og:title" content="Dinesh &amp; Kayathri — Wedding Invitation">
+  <meta property="og:description" content="Celebrate our wedding ceremony &amp; reception on 14th &amp; 15th November 2026 at Koogaiyur.">
+  <meta property="og:type" content="website">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       DRAFT PREVIEW & SUGGESTION SYSTEM
+       ========================================================================== -->
+  <aside class="preview-feedback-banner" id="previewFeedbackBanner" style="display:none;" style="display:none;" aria-label="Draft Preview Notification">
+    <div class="preview-banner-inner">
+      <div class="preview-badge-group">
+        <span class="preview-pill">✨ DRAFT PREVIEW</span>
+        <div class="preview-text-block">
+          <span class="preview-main-msg">Wedding Invitation Review — <strong>Dinesh &amp; Kayathri</strong></span>
+          <span class="preview-sub-msg">Kindly review our details, dates, and design, and share your valuable suggestions!</span>
+        </div>
+      </div>
+      <div class="preview-banner-actions">
+        <button class="preview-btn primary pulse" type="button" onclick="openFeedbackModal()">
+          <span>✍️ Give Suggestion</span>
+        </button>
+        <button class="preview-btn whatsapp" type="button" onclick="openDirectWhatsAppFeedback()">
+          <span>💬 WhatsApp Feedback</span>
+        </button>
+        <button class="preview-btn-close" type="button" onclick="togglePreviewBanner(false)" title="Hide review banner to preview clean invitation" aria-label="Hide banner">
+          &times;
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Floating Sticky Pill to Re-open Suggestion Box -->
+  <button class="preview-floating-trigger" id="previewFloatingTrigger" style="display:none;" style="display:none;" type="button" onclick="togglePreviewBanner(true)" title="Open Suggestion &amp; Feedback Box">
+    <span class="p-icon">💡</span>
+    <span class="p-text">Share Suggestion</span>
+  </button>
+
+  <!-- Background Ambient Particles & Kolam Accents -->
+  <div class="bg-decor">
+    <div class="kolam-watermark"></div>
+    <div class="kolam-watermark left"></div>
+    <div class="heart-rain" id="heartRain"></div>
+  </div>
+
+  <!-- Confetti Canvas for Celebrations -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Top Floating Controls Bar -->
+  <header class="top-controls">
+    <div class="action-buttons">
+      <!-- Replay Envelope Opening Animation -->
+      <button class="icon-btn tooltip-wrap" id="replayIntroBtn" data-tip="Replay Envelope Opening" aria-label="Replay Envelope Opening">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
+        </svg>
+      </button>
+
+      <!-- Royal Wedding Music Toggle -->
+      <button class="icon-btn tooltip-wrap" id="musicToggleBtn" data-tip="Play Wedding Music" aria-label="Toggle Wedding Music">
+        <div class="soundwave-icon">
+          <span class="soundwave-bar"></span>
+          <span class="soundwave-bar"></span>
+          <span class="soundwave-bar"></span>
+          <span class="soundwave-bar"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Royal Wedding Background Audio (loops continuously until closed) -->
+    <audio id="weddingAudio" preload="auto" loop playsinline src="audio/whatsapp-audio-2026-09-25-at-111933-pm_rhyy3XTS.mp3">
+      <source src="audio/whatsapp-audio-2026-09-25-at-111933-pm_rhyy3XTS.mp3" type="audio/mpeg">
+    </audio>
+  </header>
+
+  <!-- Main Invitation Shell -->
+  <main class="invitation-shell">
+    <div class="invitation-card" id="invitationCard">
+
+      <!-- Header Royal Temple Toran & Arch Motif -->
+      <div class="motif-header">
+        <svg viewBox="0 0 440 105" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <!-- Royal Velvet Maroon Gradient -->
+            <linearGradient id="royalMaroonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#460815"/>
+              <stop offset="60%" stop-color="#32050E"/>
+              <stop offset="100%" stop-color="#220208"/>
+            </linearGradient>
+
+            <!-- 24K Metallic Gold Gradient -->
+            <linearGradient id="richGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFF3C4"/>
+              <stop offset="30%" stop-color="#E2BC52"/>
+              <stop offset="70%" stop-color="#B88A28"/>
+              <stop offset="100%" stop-color="#FCE69C"/>
+            </linearGradient>
+
+            <!-- Soft Gold Radial Glow for Sanctum -->
+            <radialGradient id="sanctumGlow" cx="50%" cy="35%" r="50%">
+              <stop offset="0%" stop-color="#FFEBAA" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#FFEBAA" stop-opacity="0"/>
+            </radialGradient>
+
+            <!-- Drop Shadow for Bells & Kalasam -->
+            <filter id="motifShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000" flood-opacity="0.45"/>
+            </filter>
+          </defs>
+
+          <!-- Royal Scalloped Pelmet / Arch Background -->
+          <path d="M0,0 L440,0 L440,74 Q385,92 330,76 Q275,60 220,82 Q165,60 110,76 Q55,92 0,74 Z" fill="url(#royalMaroonGrad)"/>
+          <ellipse cx="220" cy="38" rx="85" ry="30" fill="url(#sanctumGlow)"/>
+
+          <!-- Ornate Golden Arch Borders -->
+          <path d="M0,74 Q55,92 110,76 Q165,60 220,82 Q275,60 330,76 Q385,92 440,74" 
+                fill="none" stroke="url(#richGoldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M0,70 Q55,88 110,72 Q165,56 220,78 Q275,56 330,72 Q385,88 440,70" 
+                fill="none" stroke="url(#richGoldGrad)" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.8"/>
+
+          <!-- Golden Pearl Fringe Drops -->
+          <g fill="url(#richGoldGrad)">
+            <circle cx="28" cy="82" r="2"/><circle cx="55" cy="86" r="2.5"/><circle cx="82" cy="82" r="2"/>
+            <circle cx="138" cy="74" r="2"/><circle cx="165" cy="69" r="2"/><circle cx="192" cy="74" r="2"/>
+            <circle cx="220" cy="85" r="3"/>
+            <circle cx="248" cy="74" r="2"/><circle cx="275" cy="69" r="2"/><circle cx="302" cy="74" r="2"/>
+            <circle cx="358" cy="82" r="2"/><circle cx="385" cy="86" r="2.5"/><circle cx="412" cy="82" r="2"/>
+          </g>
+
+          <!-- Draped Garland Swags -->
+          <g stroke="url(#richGoldGrad)" stroke-width="1.2" fill="none" opacity="0.9">
+            <path d="M0,30 Q55,60 110,34"/>
+            <path d="M110,34 Q165,54 220,36"/>
+            <path d="M220,36 Q275,54 330,34"/>
+            <path d="M330,34 Q385,60 440,30"/>
+          </g>
+
+          <!-- Mango Leaves (மாவிலை தோரணம்) -->
+          <g fill="#246938" stroke="url(#richGoldGrad)" stroke-width="0.6">
+            <path d="M32,44 Q37,58 35,62 Q29,56 32,44 Z"/>
+            <path d="M72,48 Q77,62 75,66 Q69,60 72,48 Z"/>
+            <path d="M142,44 Q147,58 145,62 Q139,56 142,44 Z"/>
+            <path d="M182,44 Q187,58 185,62 Q179,56 182,44 Z"/>
+            <path d="M258,44 Q263,58 261,62 Q255,56 258,44 Z"/>
+            <path d="M298,44 Q303,58 301,62 Q295,56 298,44 Z"/>
+            <path d="M368,48 Q373,62 371,66 Q365,60 368,48 Z"/>
+            <path d="M408,44 Q413,58 411,62 Q405,56 408,44 Z"/>
+          </g>
+
+          <!-- Marigold Blossoms (சாமந்தி மலர்கள்) -->
+          <g>
+            <circle cx="18" cy="36" r="3.5" fill="#FF9900"/><circle cx="18" cy="36" r="1.8" fill="#FFE885"/>
+            <circle cx="55" cy="48" r="4" fill="#E67300"/><circle cx="55" cy="48" r="2.2" fill="#FFE885"/>
+            <circle cx="92" cy="40" r="3.5" fill="#FF9900"/><circle cx="92" cy="40" r="1.8" fill="#FFE885"/>
+            <circle cx="128" cy="40" r="3.5" fill="#FF9900"/><circle cx="128" cy="40" r="1.8" fill="#FFE885"/>
+            <circle cx="165" cy="46" r="4" fill="#E67300"/><circle cx="165" cy="46" r="2.2" fill="#FFE885"/>
+            <circle cx="202" cy="40" r="3.5" fill="#FF9900"/><circle cx="202" cy="40" r="1.8" fill="#FFE885"/>
+            <circle cx="238" cy="40" r="3.5" fill="#FF9900"/><circle cx="238" cy="40" r="1.8" fill="#FFE885"/>
+            <circle cx="275" cy="46" r="4" fill="#E67300"/><circle cx="275" cy="46" r="2.2" fill="#FFE885"/>
+            <circle cx="312" cy="40" r="3.5" fill="#FF9900"/><circle cx="312" cy="40" r="1.8" fill="#FFE885"/>
+            <circle cx="348" cy="40" r="3.5" fill="#FF9900"/><circle cx="348" cy="40" r="1.8" fill="#FFE885"/>
+            <circle cx="385" cy="48" r="4" fill="#E67300"/><circle cx="385" cy="48" r="2.2" fill="#FFE885"/>
+            <circle cx="422" cy="36" r="3.5" fill="#FF9900"/><circle cx="422" cy="36" r="1.8" fill="#FFE885"/>
+          </g>
+
+          <!-- Sacred Central Kalasam (கலசம்) -->
+          <g transform="translate(220, 16)" filter="url(#motifShadow)">
+            <path d="M-10,-10 L-6,-6 M0,-14 L0,-9 M10,-10 L6,-6" stroke="url(#richGoldGrad)" stroke-width="0.8"/>
+            <path d="M-6,-4 Q0,-12 6,-4 Q0,-2 -6,-4 Z" fill="#1B5E20"/>
+            <path d="M-4,-4 Q0,-15 4,-4 Q0,-2 -4,-4 Z" fill="#795548" stroke="url(#richGoldGrad)" stroke-width="0.6"/>
+            <path d="M-7,-2 L7,-2 L5,8 Q0,12 -5,8 Z" fill="url(#richGoldGrad)"/>
+            <ellipse cx="0" cy="-2" rx="7" ry="1.8" fill="#FFF3C4"/>
+            <circle cx="0" cy="4" r="1.4" fill="#B71C1C"/>
+          </g>
+
+          <!-- Hanging Temple Bells (கோவில் மணிகள்) -->
+          <g class="hanging-bell" transform="translate(110, 34)" filter="url(#motifShadow)">
+            <line x1="0" y1="0" x2="0" y2="16" stroke="url(#richGoldGrad)" stroke-width="1.2" stroke-dasharray="1 2"/>
+            <path d="M-6,16 Q0,14 6,16 L5,25 Q0,26 -5,25 Z" fill="url(#richGoldGrad)"/>
+            <path d="M-7,25 Q0,24 7,25 L8,28 Q0,29 -8,28 Z" fill="#FCE69C"/>
+            <circle cx="0" cy="31" r="1.8" fill="url(#richGoldGrad)"/>
+          </g>
+          <g class="hanging-bell center-bell" transform="translate(220, 36)" filter="url(#motifShadow)">
+            <line x1="0" y1="0" x2="0" y2="20" stroke="url(#richGoldGrad)" stroke-width="1.5" stroke-dasharray="1 2"/>
+            <path d="M-8,20 Q0,17 8,20 L7,31 Q0,33 -7,31 Z" fill="url(#richGoldGrad)"/>
+            <path d="M-9.5,31 Q0,30 9.5,31 L10.5,35 Q0,37 -10.5,35 Z" fill="#FFF3C4"/>
+            <circle cx="0" cy="39" r="2.4" fill="url(#richGoldGrad)"/>
+            <circle cx="0" cy="43" r="1.2" fill="#E53935"/>
+          </g>
+          <g class="hanging-bell" transform="translate(330, 34)" filter="url(#motifShadow)">
+            <line x1="0" y1="0" x2="0" y2="16" stroke="url(#richGoldGrad)" stroke-width="1.2" stroke-dasharray="1 2"/>
+            <path d="M-6,16 Q0,14 6,16 L5,25 Q0,26 -5,25 Z" fill="url(#richGoldGrad)"/>
+            <path d="M-7,25 Q0,24 7,25 L8,28 Q0,29 -8,28 Z" fill="#FCE69C"/>
+            <circle cx="0" cy="31" r="1.8" fill="url(#richGoldGrad)"/>
+          </g>
+
+          <!-- Golden Sparkles in Heaven -->
+          <g fill="#FFF3C4">
+            <circle class="twinkle-star" style="animation-delay:0s" cx="60" cy="18" r="1.6"/>
+            <circle class="twinkle-star" style="animation-delay:.8s" cx="160" cy="14" r="1.4"/>
+            <circle class="twinkle-star" style="animation-delay:1.6s" cx="280" cy="14" r="1.4"/>
+            <circle class="twinkle-star" style="animation-delay:2.4s" cx="380" cy="18" r="1.6"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- 3D Royal Envelope Unboxing Screen -->
+      <div class="envelope-screen" id="envelopeScreen">
+        <!-- Blurred Couple Photo with Light Red Wash Backdrop -->
+        <div class="envelope-backdrop-wrap">
+          <div class="envelope-backdrop-img" style="background-image: url('assets/invitation/envelope-backdrop.jpg');" role="img" aria-label="Dinesh &amp; Kayathri Wedding Photo"></div>
+          <div class="envelope-backdrop-overlay"></div>
+        </div>
+
+        <div class="envelope-header-wrap">
+          <div class="envelope-intro-title">Wedding Invitation</div>
+          <h2 class="envelope-couple-names">Dinesh <span class="amp">&amp;</span> Kayathri</h2>
+        </div>
+        
+        <!-- 3D Postcard Envelope Physics -->
+        <div class="envelope-3d-wrap" id="envelopeWrap" role="button" tabindex="0" aria-label="Tap wax seal to open wedding invitation">
+          <div class="envelope-box" id="envelopeBox">
+            <div class="env-drop-shadow"></div>
+            <div class="env-back-paper"></div>
+            
+            <!-- Letter sliding out -->
+            <div class="env-letter-card">
+              <span class="om-mark">ௐ</span>
+              <span class="mini-couple">Dinesh &amp; Kayathri</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#540E1C" stroke-width="1.6">
+                <path d="M12 21s-7-4.35-9.5-9C.7 8.2 2.6 4.5 6.2 4.1c2-.2 3.6.9 4.8 2.6C12.2 5 13.8 3.9 15.8 4.1c3.6.4 5.5 4.1 3.7 7.9C17 16.65 12 21 12 21Z"/>
+              </svg>
+            </div>
+            
+            <!-- Folds: Red top, Red bottom, Beige left & right -->
+            <div class="env-side-left"></div>
+            <div class="env-side-right"></div>
+            <div class="env-front-fold"></div>
+
+            <!-- Couple Photo Lightly Visible on the Postbox -->
+            <div class="env-photo-watermark" style="background-image: url('assets/invitation/envelope-backdrop.jpg');"></div>
+
+            <!-- Elegant Gold Line Accents on Postbox -->
+            <div class="env-gold-accents">
+              <svg viewBox="0 0 210 140" fill="none" class="gold-lines-svg">
+                <defs>
+                  <linearGradient id="goldLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF3C4"/>
+                    <stop offset="35%" stop-color="#E5C158"/>
+                    <stop offset="70%" stop-color="#B88A28"/>
+                    <stop offset="100%" stop-color="#FCE69C"/>
+                  </linearGradient>
+                  <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1" flood-color="#D4AF37" flood-opacity="0.8"/>
+                  </filter>
+                </defs>
+                <!-- Gold Pinstripe Border Frame -->
+                <rect x="5" y="5" width="200" height="130" rx="6" stroke="url(#goldLineGrad)" stroke-width="1.2" stroke-dasharray="3, 2.5" opacity="0.95"/>
+                <rect x="8" y="8" width="194" height="124" rx="4" stroke="url(#goldLineGrad)" stroke-width="0.6" opacity="0.6"/>
+                
+                <!-- Gold Corner Brackets -->
+                <path d="M 12 20 L 12 12 L 20 12" stroke="url(#goldLineGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M 198 20 L 198 12 L 190 12" stroke="url(#goldLineGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M 12 120 L 12 128 L 20 128" stroke="url(#goldLineGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M 198 120 L 198 128 L 190 128" stroke="url(#goldLineGrad)" stroke-width="1.5" stroke-linecap="round"/>
+
+                <!-- Gold Diagonal Fold Lines Tracing the Triangles -->
+                <line x1="0" y1="0" x2="105" y2="70" stroke="url(#goldLineGrad)" stroke-width="1.1" opacity="0.85"/>
+                <line x1="210" y1="0" x2="105" y2="70" stroke="url(#goldLineGrad)" stroke-width="1.1" opacity="0.85"/>
+                <line x1="0" y1="140" x2="105" y2="62" stroke="url(#goldLineGrad)" stroke-width="1.5" opacity="0.95" filter="url(#goldGlow)"/>
+                <line x1="210" y1="140" x2="105" y2="62" stroke="url(#goldLineGrad)" stroke-width="1.5" opacity="0.95" filter="url(#goldGlow)"/>
+
+                <!-- Delicate Gold Corner Accents -->
+                <circle cx="12" cy="12" r="1.5" fill="url(#goldLineGrad)"/>
+                <circle cx="198" cy="12" r="1.5" fill="url(#goldLineGrad)"/>
+                <circle cx="12" cy="128" r="1.5" fill="url(#goldLineGrad)"/>
+                <circle cx="198" cy="128" r="1.5" fill="url(#goldLineGrad)"/>
+              </svg>
+            </div>
+
+            <!-- Top Flap (Red with Gold V-Edge) -->
+            <div class="env-top-flap">
+              <div class="flap-gold-line"></div>
+            </div>
+            
+            <!-- Wax Seal with Gold Monogram and Crimson Ring -->
+            <div class="env-wax-seal" id="envWaxSeal">
+              <span class="monogram">D♥K</span>
+              <div class="seal-sparkle-burst" id="sealSparkleBurst"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action / Prompt -->
+        <div class="envelope-action-wrap">
+          <p class="envelope-prompt-text" id="envelopePrompt">
+            <span>✨</span> Tap wax seal to open invitation <span>✨</span>
+          </p>
+
+          <button class="skip-intro-btn" id="skipIntroBtn" type="button">Skip to Invitation &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Slides / Continuous Content Container -->
+      <div class="slides-container" id="slidesContainer">
+
+        <!-- ==========================================
+             SLIDE 1 : WELCOME & INVOCATION
+             ========================================== -->
+        <section class="slide-section active-slide" id="slide-0" data-slide="0">
+          <div class="sacred-om-badge">
+            <span>ௐ</span>
+          </div>
+          <div class="tagline-eyebrow">With the blessings of the almighty &amp; our elders</div>
+          <h1 class="display-title">Better Together!</h1>
+          <div class="gold-divider"></div>
+          <p class="body-lead">
+            With hearts brimming with joy and gratitude, we warmly welcome you to celebrate the union of two souls. Your gracious presence, love, and sacred blessings are our most cherished gifts as we begin this beautiful new journey.
+          </p>
+          <button class="btn btn-cta" type="button" onclick="goToInvitationSlide(1)">
+            Open Invitation <span style="font-size:16px;">♥</span>
+          </button>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 2 : THE COUPLE
+             ========================================== -->
+        <section class="slide-section" id="slide-1" data-slide="1">
+          <div class="tagline-eyebrow">The wedding celebration of</div>
+          <h2 class="couple-hero-title">Dinesh<span class="amp">&amp;</span>Kayathri</h2>
+          <div class="gold-divider"></div>
+          
+          <!-- Authentic Couple Photo from Printed Card -->
+          <div class="couple-card-preview-wrap" onclick="openGalleryModal()" role="button" tabindex="0" title="Tap to view printed card" aria-label="View Printed Wedding Card">
+            <div class="couple-avatar-glow">
+              <img src="assets/invitation/couple-portrait.jpg" alt="Dinesh and Kayathri" class="couple-avatar-img">
+            </div>
+            <div class="couple-qualifications">
+              <span class="groom-qual">Er. சு. தினேஷ் <small>DME., BE.</small></span>
+              <span class="qual-divider">♥</span>
+              <span class="bride-qual">Dr. வீ. காயத்ரி <small>BPT., MPT(Ortho)</small></span>
+            </div>
+            <div class="tamil-love-quote">
+              &ldquo;முதலும் நீ, முடிவும் நீ, என் வாழ்க்கை முழுவதும் நீ&rdquo;
+            </div>
+          </div>
+
+          <p class="body-lead">
+            Two hearts that found each other, two families now bound as one, beginning a journey of love, honor, and joy that lasts a lifetime.
+          </p>
+          <div style="display:flex; flex-direction:column; gap:10px; width:100%; max-width:280px; margin-top:6px;">
+            <button class="btn btn-outline" type="button" onclick="openGalleryModal()">
+              View Printed Card 💌
+            </button>
+            <button class="btn" type="button" onclick="goToInvitationSlide(2)">
+              View Muhurtham Ceremony &rarr;
+            </button>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 3 : MUHURTHAM CEREMONY
+             ========================================== -->
+        <section class="slide-section" id="slide-2" data-slide="2">
+          
+          <!-- Live Muhurtham Countdown Timer -->
+          <div class="countdown-box">
+            <div class="countdown-heading">Counting down to Brahma Muhurtham</div>
+            <div class="countdown-grid" id="countdown">
+              <div class="cd-tile">
+                <span class="num" id="cd-days">00</span>
+                <span class="unit">Days</span>
+              </div>
+              <div class="cd-tile">
+                <span class="num" id="cd-hours">00</span>
+                <span class="unit">Hours</span>
+              </div>
+              <div class="cd-tile">
+                <span class="num" id="cd-mins">00</span>
+                <span class="unit">Mins</span>
+              </div>
+              <div class="cd-tile">
+                <span class="num" id="cd-secs">00</span>
+                <span class="unit">Secs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tagline-eyebrow">Auspicious Wedding Ceremony</div>
+          
+          <!-- Date & Time Grid -->
+          <div class="event-info-grid">
+            <div class="event-info-card">
+              <div class="event-icon-circle" title="Auspicious Wedding Date">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="3"/>
+                  <path d="M3 9h18"/>
+                  <path d="M8 2v4"/>
+                  <path d="M16 2v4"/>
+                  <circle cx="12" cy="15" r="2.2"/>
+                  <path d="M12 11.5v1.2"/>
+                  <path d="M12 17.3v1.2"/>
+                  <path d="M8.5 15h1.2"/>
+                  <path d="M14.3 15h1.2"/>
+                  <path d="M9.5 12.5l.8.8"/>
+                  <path d="M13.7 16.7l.8.8"/>
+                  <path d="M9.5 17.5l.8-.8"/>
+                  <path d="M13.7 13.3l.8-.8"/>
+                </svg>
+              </div>
+              <div>
+                <div class="card-label">Date</div>
+                <div class="card-val-primary">15 Nov 2026</div>
+                <div class="card-val-sub">Sunday</div>
+              </div>
+            </div>
+
+            <div class="event-info-card">
+              <div class="event-icon-circle" title="Brahma Muhurtham Dawn Hour">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <polyline points="12 6.5 12 12 15.5 14.5"/>
+                  <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+                  <path d="M12 3v1.5"/>
+                  <path d="M21 12h-1.5"/>
+                  <path d="M12 21v-1.5"/>
+                  <path d="M3 12h1.5"/>
+                </svg>
+              </div>
+              <div>
+                <div class="card-label">Time</div>
+                <div class="card-val-primary">4:30–6:00 AM</div>
+                <div class="card-val-sub">Brahma Muhurtham</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Temple Venue Card -->
+          <div class="event-info-card full-width">
+            <div class="event-icon-circle" title="Sacred Temple Venue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v2.5"/>
+                <circle cx="12" cy="2.5" r="0.8" fill="currentColor"/>
+                <path d="M8.5 7.5c0-1.8 1.5-3 3.5-3s3.5 1.2 3.5 3"/>
+                <path d="M7 7.5h10"/>
+                <path d="M6 11.5h12"/>
+                <path d="M7.5 7.5l-1.5 4"/>
+                <path d="M16.5 7.5l1.5 4"/>
+                <path d="M4 15.5h16"/>
+                <path d="M6 11.5l-2 4"/>
+                <path d="M18 11.5l2 4"/>
+                <path d="M2 21.5h20"/>
+                <path d="M5 15.5v6"/>
+                <path d="M19 15.5v6"/>
+                <path d="M9.5 21.5v-3.5a2.5 2.5 0 0 1 5 0v3.5"/>
+              </svg>
+            </div>
+            <div class="card-label">Ceremony Venue</div>
+            <div class="card-val-primary" style="font-size:20px;">Sri Swarnapureeswarar Temple</div>
+            <div class="card-val-sub">Koogaiyur, Tamil Nadu</div>
+            
+            <div class="location-btn-row">
+              <a class="chip-link" href="https://www.google.com/maps/search/?api=1&query=Sri+Swarnapureeswarar+Temple+Koogaiyur" target="_blank" rel="noopener">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                Open in Maps ↗
+              </a>
+              <button class="chip-link" type="button" onclick="copyVenueAddress('Sri Swarnapureeswarar Temple, Koogaiyur', this)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy Address
+              </button>
+            </div>
+          </div>
+
+          <!-- Helpline & Contacts -->
+          <div class="helpline-box">
+            <div class="helpline-title">
+              <span>Need Assistance? Call Us</span>
+              <span style="color:var(--maroon-rich);">📞</span>
+            </div>
+            <div class="contact-chips-wrap">
+              <a class="contact-pill" href="tel:+919942268549">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +91 99422 68549
+              </a>
+              <a class="contact-pill" href="tel:+918870851124">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +91 88708 51124
+              </a>
+              <a class="contact-pill whatsapp" href="https://wa.me/919942268549?text=Congratulations%20Dinesh%20and%20Kayathri!%20Wishing%20you%20a%20blissful%20married%20life!%20%F0%9F%8C%B8%E2%9C%A8" target="_blank" rel="noopener">
+                <span>💬</span> WhatsApp Wish
+              </a>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:8px; width:100%; max-width:280px;">
+            <button class="btn btn-outline" type="button" onclick="downloadIcsEvent('muhurtham')">
+              Add Muhurtham to Calendar 📅
+            </button>
+            <button class="btn" type="button" onclick="goToInvitationSlide(3)">
+              View Reception Celebration &rarr;
+            </button>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 4 : RECEPTION CELEBRATION
+             ========================================== -->
+        <section class="slide-section" id="slide-3" data-slide="3">
+          <div class="tagline-eyebrow">An evening of music &amp; dining</div>
+          <h1 class="display-title" style="font-size:36px;">Wedding Reception</h1>
+          <div class="gold-divider"></div>
+          
+          <!-- Date & Time Grid -->
+          <div class="event-info-grid">
+            <div class="event-info-card">
+              <div class="event-icon-circle" title="Reception Date">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="3"/>
+                  <path d="M3 9h18"/>
+                  <path d="M8 2v4"/>
+                  <path d="M16 2v4"/>
+                  <path d="M12 11.5l.9 2 2.1.3-1.5 1.5.4 2.2-1.9-1-1.9 1 .4-2.2-1.5-1.5 2.1-.3z" fill="currentColor"/>
+                </svg>
+              </div>
+              <div>
+                <div class="card-label">Date</div>
+                <div class="card-val-primary">14 Nov 2026</div>
+                <div class="card-val-sub">Saturday</div>
+              </div>
+            </div>
+
+            <div class="event-info-card">
+              <div class="event-icon-circle" title="Evening Gala Time">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <polyline points="12 6.5 12 12 8.5 15.5"/>
+                  <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+                  <path d="M17 7a3 3 0 0 1-2.5 2.5 3 3 0 0 0 2.5-2.5z" fill="currentColor"/>
+                </svg>
+              </div>
+              <div>
+                <div class="card-label">Time</div>
+                <div class="card-val-primary">7:00–9:00 PM</div>
+                <div class="card-val-sub">Evening Gala</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reception Venue Card -->
+          <div class="event-info-card full-width">
+            <div class="event-icon-circle" title="Grand Reception Palace Venue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 21.5h20"/>
+                <path d="M8 9.5c0-3.2 1.8-5.5 4-5.5s4 2.3 4 5.5"/>
+                <path d="M12 2v2"/>
+                <circle cx="12" cy="2" r="0.7" fill="currentColor"/>
+                <path d="M3 10.5c0-2 1.2-3.5 2.5-3.5s2.5 1.5 2.5 3.5"/>
+                <path d="M16 10.5c0-2 1.2-3.5 2.5-3.5s2.5 1.5 2.5 3.5"/>
+                <path d="M3 10.5v11"/>
+                <path d="M21 10.5v11"/>
+                <path d="M8 9.5v12"/>
+                <path d="M16 9.5v12"/>
+                <path d="M2 14h20"/>
+                <path d="M10 21.5v-4.5a2 2 0 0 1 4 0v4.5"/>
+              </svg>
+            </div>
+            <div class="card-label">Reception Venue</div>
+            <div class="card-val-primary" style="font-size:20px;">Senthur Mahal</div>
+            <div class="card-val-sub">Koogaiyur, Tamil Nadu</div>
+            
+            <div class="location-btn-row">
+              <a class="chip-link" href="https://www.google.com/maps/search/?api=1&query=Senthur+Mahal+Koogaiyur" target="_blank" rel="noopener">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                Open in Maps ↗
+              </a>
+              <button class="chip-link" type="button" onclick="copyVenueAddress('Senthur Mahal, Koogaiyur', this)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy Address
+              </button>
+            </div>
+          </div>
+
+          <!-- Helpline & Contacts -->
+          <div class="helpline-box">
+            <div class="helpline-title">
+              <span>Need Directions? Call Us</span>
+              <span style="color:var(--maroon-rich);">📞</span>
+            </div>
+            <div class="contact-chips-wrap">
+              <a class="contact-pill" href="tel:+919942268549">+91 99422 68549</a>
+              <a class="contact-pill" href="tel:+918870851124">+91 88708 51124</a>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:8px; width:100%; max-width:280px;">
+            <button class="btn btn-outline" type="button" onclick="downloadIcsEvent('reception')">
+              Add Reception to Calendar 📅
+            </button>
+            <button class="btn" type="button" onclick="goToInvitationSlide(4)">
+              View Blessings &amp; Wishes &rarr;
+            </button>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 5 : CLOSING & WISHES GUESTBOOK
+             ========================================== -->
+        <section class="slide-section" id="slide-4" data-slide="4">
+          <div class="sacred-om-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#540E1C">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <div class="tagline-eyebrow">With Love &amp; Gratitude</div>
+          <h1 class="display-title" style="font-size:32px;">Your Presence Is Our Greatest Blessing</h1>
+          <p class="body-text">
+            With hearts full of love and dreams ready to take flight, we joyfully invite you to grace our wedding celebrations and bestow your kind blessings upon us.
+          </p>
+          <div class="gold-divider"></div>
+          
+          <h2 class="couple-hero-title" style="font-size:36px; margin-bottom:2px;">Dinesh &amp; Kayathri</h2>
+          <p style="font-size:12px; color:var(--ink-light); letter-spacing:0.8px; margin-bottom:14px;">
+            Awaiting your gracious presence with family &amp; friends
+          </p>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:16px;">
+            <button class="btn btn-cta" type="button" onclick="openWishesModal()">
+              Share Your Wishes 💌
+            </button>
+            <button class="btn btn-outline" type="button" onclick="goToInvitationSlide(0)">
+              View Again ↺
+            </button>
+          </div>
+
+          <!-- Live Interactive Wishes Wall -->
+          <div class="wishes-wall-container">
+            <div class="wishes-wall-title">Blessings From Loved Ones</div>
+            <div class="wishes-list" id="wishesList">
+              <!-- Dynamically populated from JS state / localStorage -->
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Story Mode Navigation Footer Bar -->
+      <footer class="story-nav-bar">
+        <button class="nav-arrow-btn" id="prevSlideBtn" type="button" aria-label="Previous Slide">
+          ‹ Previous
+        </button>
+        <div class="dots-indicators" id="dotsContainer">
+          <!-- Dynamically populated from JS -->
+        </div>
+        <button class="nav-arrow-btn" id="nextSlideBtn" type="button" aria-label="Next Slide">
+          Next ›
+        </button>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       MODAL 1: Share Your Wishes & Blessings
+       ========================================================================== -->
+  <div class="custom-modal" id="wishesModal" role="dialog" aria-modal="true" aria-labelledby="wishesModalTitle">
+    <div class="modal-content-card">
+      <button class="modal-close-cross" type="button" onclick="closeWishesModal()" aria-label="Close Modal">&times;</button>
+      
+      <div class="sacred-om-badge" style="margin-bottom:8px;">💌</div>
+      <h2 class="display-title" id="wishesModalTitle" style="font-size:24px; margin-bottom:6px;">Share Your Blessings</h2>
+      <p style="font-size:12px; color:var(--ink-light); margin-bottom:14px;">
+        Leave your warm wishes and prayers for Dinesh &amp; Kayathri
+      </p>
+
+      <form id="wishesForm">
+        <div class="modal-form-group">
+          <label for="wishAuthorName">Your Name *</label>
+          <input class="modal-input" id="wishAuthorName" type="text" placeholder="e.g. Ramesh &amp; Family" required>
+        </div>
+        
+        <div class="modal-form-group">
+          <label for="wishAuthorRelation">Relationship (Optional)</label>
+          <input class="modal-input" id="wishAuthorRelation" type="text" placeholder="e.g. Friend / Relative / Colleague">
+        </div>
+
+        <div class="modal-form-group">
+          <label for="wishMessageText">Your Blessings / Message *</label>
+          <textarea class="modal-textarea" id="wishMessageText" rows="3" placeholder="Write your heartfelt blessing..." required></textarea>
+        </div>
+
+        <button class="btn btn-cta" id="wishSubmitBtn" type="submit" style="width:100%; justify-content:center; margin-top:16px;">
+          Send Wishes &amp; Blessings ♥
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: Digital Printed Invitation Card Lightbox
+       ========================================================================== -->
+  <!-- ==========================================================================
+       MODAL 2: Original Printed Wedding Invitation Card Lightbox
+       ========================================================================== -->
+  <div class="custom-modal" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="galleryModalTitle">
+    <div class="modal-content-card gallery-modal-content">
+      <button class="modal-close-cross" type="button" onclick="closeGalleryModal()" aria-label="Close Lightbox">&times;</button>
+      
+      <div class="gallery-modal-header">
+        <span class="om-tag">ௐ ஸ்ரீ அய்யனார் துணை</span>
+        <h2 class="display-title" id="galleryModalTitle">Original Printed Wedding Card</h2>
+        <p class="modal-sub-desc">திருமண அழைப்பிதழ் &bull; Dinesh &amp; Kayathri &bull; Koogaiyur</p>
+      </div>
+
+      <!-- Quick Switcher Tabs -->
+      <div class="card-tabs-nav">
+        <button type="button" class="card-tab-btn active" id="cardTab0" onclick="switchCardSlide(0)">
+          <span class="tab-icon">🌟</span>
+          <span>Side 1: Outer Cover &amp; Couple</span>
+        </button>
+        <button type="button" class="card-tab-btn" id="cardTab1" onclick="switchCardSlide(1)">
+          <span class="tab-icon">📜</span>
+          <span>Side 2: Sacred Tamil Invitation</span>
+        </button>
+      </div>
+
+      <div class="gallery-carousel">
+        <div class="gallery-track" id="galleryTrack">
+          
+          <!-- Side 1: Outer 3-Fold Printed Card -->
+          <div class="gallery-item-slide">
+            <div class="printed-card-frame">
+              <div class="card-zoom-container" id="zoomContainer0">
+                <img src="assets/invitation/printed-card-outer.jpg" alt="Dinesh &amp; Kayathri Wedding Invitation - Outer Cover" class="printed-card-img" id="printedCardImg0" onclick="toggleCardZoom(0)">
+              </div>
+              <div class="printed-card-meta">
+                <div class="card-meta-tags">
+                  <span class="meta-pill">திருமண உறுதி அழைப்பிதழ்</span>
+                  <span class="meta-pill">Reception: 14 Nov</span>
+                  <span class="meta-pill">Muhurtham: 15 Nov</span>
+                </div>
+                <div class="card-action-bar">
+                  <button type="button" class="card-action-btn" onclick="toggleCardZoom(0)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    <span id="zoomLabel0">Zoom</span>
+                  </button>
+                  <a href="assets/invitation/printed-card-outer.jpg" target="_blank" download="Dinesh-Kayathri-Wedding-Card-Outer.jpg" class="card-action-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                  </a>
+                  <a href="assets/invitation/printed-card-outer.jpg" target="_blank" rel="noopener" class="card-action-btn primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    Full View ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side 2: Inner 3-Fold Printed Card -->
+          <div class="gallery-item-slide">
+            <div class="printed-card-frame">
+              <div class="card-zoom-container" id="zoomContainer1">
+                <img src="assets/invitation/printed-card-inner.jpg" alt="Dinesh &amp; Kayathri Wedding Invitation - Inside Sacred Details" class="printed-card-img" id="printedCardImg1" onclick="toggleCardZoom(1)">
+              </div>
+              <div class="printed-card-meta">
+                <div class="card-meta-tags">
+                  <span class="meta-pill">Er. சு. தினேஷ் DME., BE.</span>
+                  <span class="meta-pill">Dr. வீ. காயத்ரி BPT., MPT</span>
+                  <span class="meta-pill">ஸ்ரீ அய்யனார் துணை</span>
+                </div>
+                <div class="card-action-bar">
+                  <button type="button" class="card-action-btn" onclick="toggleCardZoom(1)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    <span id="zoomLabel1">Zoom</span>
+                  </button>
+                  <a href="assets/invitation/printed-card-inner.jpg" target="_blank" download="Dinesh-Kayathri-Wedding-Card-Inner.jpg" class="card-action-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                  </a>
+                  <a href="assets/invitation/printed-card-inner.jpg" target="_blank" rel="noopener" class="card-action-btn primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    Full View ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="gallery-nav-dots">
+        <span class="g-dot-item active" onclick="switchCardSlide(0)"></span>
+        <span class="g-dot-item" onclick="switchCardSlide(1)"></span>
+      </div>
+
+      <button class="btn btn-outline" type="button" style="margin-top:14px; font-size:12px; padding:8px 24px;" onclick="closeGalleryModal()">
+        Close Preview &times;
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: Invitation Review & Suggestions / Feedback
+       ========================================================================== -->
+  <div class="custom-modal" id="feedbackModal" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle">
+    <div class="modal-content-card feedback-modal-card">
+      <button class="modal-close-cross" type="button" onclick="closeFeedbackModal()" aria-label="Close Modal">&times;</button>
+      
+      <div class="sacred-om-badge" style="margin-bottom:8px;">💡</div>
+      <h2 class="display-title" id="feedbackModalTitle" style="font-size:23px; margin-bottom:4px;">Invitation Review &amp; Suggestions</h2>
+      <p style="font-size:12.5px; color:var(--ink-light); margin-bottom:14px; line-height:1.4;">
+        Thank you for reviewing our invitation! Please share any corrections, wording advice, or your blessings.
+      </p>
+
+      <!-- Quick 1-Click Suggestion Tags -->
+      <div class="feedback-topics-label">Quick Checklist (Tap to add):</div>
+      <div class="quick-tags-grid" id="quickTagsGrid">
+        <button type="button" class="quick-tag" onclick="toggleFeedbackTag(this, 'Looks stunning & perfect! ❤️')">❤️ Looks Perfect!</button>
+        <button type="button" class="quick-tag" onclick="toggleFeedbackTag(this, 'Names & Spellings look correct ✓')">✓ Spellings &amp; Names</button>
+        <button type="button" class="quick-tag" onclick="toggleFeedbackTag(this, 'Check Brahma Muhurtham timings ⏰')">⏰ Check Timings</button>
+        <button type="button" class="quick-tag" onclick="toggleFeedbackTag(this, 'Check Venue & Google Maps link 📍')">📍 Check Venue/Map</button>
+        <button type="button" class="quick-tag" onclick="toggleFeedbackTag(this, 'Tamil text & font review 📜')">📜 Tamil Text</button>
+        <button type="button" class="quick-tag" onclick="toggleFeedbackTag(this, 'Add family members / Bus route info 👨‍👩‍👧')">👨‍👩‍👧 Family/Travel Info</button>
+      </div>
+
+      <form id="feedbackForm" onsubmit="handleSendFeedback(event, 'dinesh')">
+        <div class="modal-form-group">
+          <label for="reviewerName">Your Name *</label>
+          <input class="modal-input" id="reviewerName" type="text" placeholder="e.g. Ramesh Mama / Priya / Suresh &amp; Family" required>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="reviewerRelation">Relationship / Role (Optional)</label>
+          <input class="modal-input" id="reviewerRelation" type="text" placeholder="e.g. Relative / Friend / Colleague / Well-wisher">
+        </div>
+
+        <div class="modal-form-group">
+          <label>Overall Impression</label>
+          <div class="star-rating-row" id="starRatingRow">
+            <button type="button" class="star-btn active" data-val="1" onclick="setStarRating(1)">★</button>
+            <button type="button" class="star-btn active" data-val="2" onclick="setStarRating(2)">★</button>
+            <button type="button" class="star-btn active" data-val="3" onclick="setStarRating(3)">★</button>
+            <button type="button" class="star-btn active" data-val="4" onclick="setStarRating(4)">★</button>
+            <button type="button" class="star-btn active" data-val="5" onclick="setStarRating(5)">★</button>
+            <span class="star-label-text" id="starLabelText">5 / 5 — Loved it!</span>
+          </div>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="reviewerComments">Your Suggestions / Remarks *</label>
+          <textarea class="modal-textarea" id="reviewerComments" rows="3" placeholder="Write any suggestions, advice, or blessings..." required></textarea>
+        </div>
+
+        <!-- Feedback Action Buttons -->
+        <div class="feedback-action-stack">
+          <button class="btn btn-cta whatsapp-btn" type="submit" style="width:100%; justify-content:center; gap:8px;">
+            <span>💬 Send Suggestion to Dinesh (WhatsApp)</span>
+          </button>
+          
+          <div style="display:flex; gap:8px; width:100%;">
+            <button class="btn btn-outline" type="button" onclick="handleSendFeedback(event, 'kayathri')" style="flex:1; justify-content:center; font-size:11.5px; padding:9px 10px;">
+              <span>💬 Send to Kayathri</span>
+            </button>
+            <button class="btn btn-outline" type="button" onclick="copyFeedbackText()" style="flex:1; justify-content:center; font-size:11.5px; padding:9px 10px;">
+              <span id="copyFeedbackBtnText">📋 Copy Text</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+
+</body>
+</html>
