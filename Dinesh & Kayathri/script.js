@@ -350,6 +350,8 @@
     if (dom.slidesContainer) {
       dom.slidesContainer.scrollTop = 0;
     }
+    goToSlide(0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function initEnvelope() {
